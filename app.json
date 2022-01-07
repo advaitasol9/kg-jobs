@@ -1,0 +1,8 @@
+{
+  "name": "farminsta",
+  "displayName": "FarmInsta",
+  "expo": {
+    "name": "FarmInsta",
+    "slug": "farm-insta"
+  }
+}
