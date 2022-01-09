@@ -10,6 +10,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:allowBackup="false"
             android:theme="@style/AppTheme">
+            <meta-data android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyAo9kdrpcvZnEY4amU19k4_LbUCMVkzFWk"/>
         <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL"
                    android:value="https://exp.host/@kisangates/farm-insta"/>
         <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="43.0.0"/>

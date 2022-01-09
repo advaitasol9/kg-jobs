@@ -1,8 +1,6 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import SplashScreen from 'react-native-splash-screen';
 import {hasNotch} from 'react-native-device-info';
 
 import {navigationRef} from './NavigationService';
@@ -33,10 +31,6 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
-  React.useEffect(() => {
-    SplashScreen.hide();
-  }, []);
-
   const MyTabs = () => {
     const IconStyle = focused => {
       return {
@@ -136,21 +130,16 @@ export default function AppNavigator() {
   };
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen
-          name={ROUTE_NAME.AUTHENTICATION}
-          component={Authentication}
-        />
-        <Stack.Screen name={ROUTE_NAME.INTRODUCTION} component={Introduction} />
-        <Stack.Screen name={ROUTE_NAME.ONBOARDING} component={Onboarding} />
-        <Stack.Screen name={ROUTE_NAME.MY_TABS} component={MyTabs} />
-        <Stack.Screen name={ROUTE_NAME.JOB_DETAILS} component={JobDetails} />
-        <Stack.Screen
-          name={ROUTE_NAME.SEARCH_RESULT}
-          component={SearchResult}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen
+        name={ROUTE_NAME.AUTHENTICATION}
+        component={Authentication}
+      />
+      <Stack.Screen name={ROUTE_NAME.INTRODUCTION} component={Introduction} />
+      <Stack.Screen name={ROUTE_NAME.ONBOARDING} component={Onboarding} />
+      <Stack.Screen name={ROUTE_NAME.MY_TABS} component={MyTabs} />
+      <Stack.Screen name={ROUTE_NAME.JOB_DETAILS} component={JobDetails} />
+      <Stack.Screen name={ROUTE_NAME.SEARCH_RESULT} component={SearchResult} />
+    </Stack.Navigator>
   );
 }

@@ -7,6 +7,7 @@ import {
   FONTS_OVERPASS_TEXT,
   styleBase,
 } from '../../Constants';
+import {verticalScale} from '../../Constants/Size';
 
 const styles = StyleSheet.create({
   outterView: {
@@ -41,10 +42,34 @@ const styles = StyleSheet.create({
   },
 });
 
-function PhoneNoInput({PhoneNumber, onChangeText}) {
+const Layouts = {
+  none: 'none',
+  box: 'box',
+};
+
+function PhoneNoInput({
+  PhoneNumber,
+  onChangeText,
+  layout = Layouts.box,
+  autoFocus = false,
+}) {
+  const isLayoutNone = layout == Layouts.none;
   return (
-    <View style={styles.outterView}>
-      <View style={styles.countryCodeView}>
+    <View
+      style={[
+        styles.outterView,
+        isLayoutNone && {backgroundColor: 'transparent'},
+      ]}>
+      <View
+        style={[
+          styles.countryCodeView,
+          isLayoutNone && {
+            borderBottomWidth: 1,
+            borderColor: '#E7EDF0',
+            height: verticalScale(48),
+            borderRightWidth: 0,
+          },
+        ]}>
         <Text style={styles.countryCodeText}>+91</Text>
         <Image source={DownArrow} style={styles.DownArrow} />
       </View>
@@ -52,10 +77,14 @@ function PhoneNoInput({PhoneNumber, onChangeText}) {
         <TextInput
           value={PhoneNumber}
           onChangeText={onChangeText}
-          underlineColorAndroid={COLORS.transparentColor}
+          underlineColorAndroid={
+            isLayoutNone ? '#E7EDF0' : COLORS.transparentColor
+          }
           keyboardType="phone-pad"
           maxLength={10}
+          placeholder={isLayoutNone ? 'Enter Mobile Number' : null}
           style={styles.countryCodeText}
+          autoFocus={autoFocus}
         />
       </View>
     </View>
