@@ -2,10 +2,10 @@ import React from 'react';
 import {View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from '../../../Components/Other/BottomTabs';
-import Home from './Home';
 import Requests from './Requests';
 import Profile from './Profile';
 import {dynamicSize} from '../../../Constants';
+import HomeStack from './HomeStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +17,7 @@ const HomeTabs = () => {
         tabBarIcon: ({focused}) => {
           let imgPath;
 
-          if (route.name === 'Home') {
+          if (route.name === 'HomeStack') {
             imgPath = !focused
               ? require('../../../Assets/homeIc.png')
               : require('../../../Assets/homeIcSelected.png');
@@ -43,7 +43,11 @@ const HomeTabs = () => {
         //   headerTransparent: true,
         headerTitleAlign: 'center',
       })}>
-      <Tab.Screen name={'Home'} component={Home} />
+      <Tab.Screen
+        name={'HomeStack'}
+        component={HomeStack}
+        options={{headerShown: false}}
+      />
       <Tab.Screen name={'Requests'} component={Requests} />
       <Tab.Screen name={'Profile'} component={Profile} />
     </Tab.Navigator>

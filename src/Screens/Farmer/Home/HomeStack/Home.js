@@ -1,13 +1,23 @@
-import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Modal,
+} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import NormalButton from '../../../Components/Button/NormalButton';
-import {FONTS_OVERPASS_TEXT} from '../../../Constants';
-import {scale, verticalScale} from '../../../Constants/Size';
-import {tStyle} from '../../../Constants/TextStyle';
+import NormalButton from '../../../../Components/Button/NormalButton';
+import {FONTS_OVERPASS_TEXT} from '../../../../Constants';
+import {scale, verticalScale} from '../../../../Constants/Size';
+import {tStyle} from '../../../../Constants/TextStyle';
 import {Shadow} from 'react-native-shadow-2';
+import MoreMenu from '../MoreMenu';
 
 const Home = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     navigation.setOptions({
       header: () => (
@@ -25,11 +35,16 @@ const Home = ({navigation}) => {
               flexDirection: 'row',
               backgroundColor: '#ffffff',
             }}>
-            <Image
-              source={require('../../../Assets/homeHeaderLeft.png')}
-              height={verticalScale(36)}
-              width={scale(30.5)}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                setModalVisible(true);
+              }}>
+              <Image
+                source={require('../../../../Assets/homeHeaderLeft.png')}
+                height={verticalScale(36)}
+                width={scale(30.5)}
+              />
+            </TouchableOpacity>
             <TouchableOpacity
               style={{
                 backgroundColor: '#E7EDF0',
@@ -38,9 +53,12 @@ const Home = ({navigation}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 5,
+              }}
+              onPress={() => {
+                navigation.navigate('Notifications');
               }}>
               <Image
-                source={require('../../../Assets/notifBell.png')}
+                source={require('../../../../Assets/notifBell.png')}
                 height={verticalScale(26.6)}
                 width={scale(23.31)}
                 resizeMode="contain"
@@ -68,7 +86,7 @@ const Home = ({navigation}) => {
         <Text style={styles.text1}>Hello Vinay</Text>
         <Text style={styles.text2}>Recommended actions for you</Text>
         <Image
-          source={require('../../../Assets/homett.png')}
+          source={require('../../../../Assets/homett.png')}
           height={verticalScale(110)}
           width={scale(364)}
           resizeMode="cover"
@@ -90,7 +108,18 @@ const Home = ({navigation}) => {
           position: 'absolute',
           bottom: verticalScale(20),
         }}
+        onPress={() => {
+          navigation.navigate('CreateRequest1');
+        }}
       />
+      <Modal visible={modalVisible}>
+        <MoreMenu
+          hideModal={() => {
+            setModalVisible(false);
+            console.log('hello');
+          }}
+        />
+      </Modal>
     </View>
   );
 };

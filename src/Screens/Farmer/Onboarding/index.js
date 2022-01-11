@@ -27,7 +27,7 @@ const FarmerStack = () => {
       <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
       <Stack.Screen name="SelectProfile" component={SelectProfile} />
       <Stack.Screen
-        name="Home"
+        name="HomeTabs"
         component={HomeTabs}
         options={{headerShown: false}}
       />

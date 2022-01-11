@@ -28,7 +28,7 @@ const SelectProfile = ({navigation}) => {
           {text: '& I love farming', style: {color: '#043B53'}},
         ]}
         onPress={() => {
-          navigation.navigate('Home');
+          navigation.navigate('HomeTabs');
         }}
         imgSrc={require('../../../Assets/farmer.png')}
         style={{marginTop: verticalScale(30)}}
