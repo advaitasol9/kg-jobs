@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1.5,
     borderColor: '#E7EDF0',
+    backgroundColor: '#fff',
   },
 
   routeName: {

@@ -3,9 +3,9 @@ import {View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from '../../../Components/Other/BottomTabs';
 import Requests from './Requests';
-import Profile from './Profile';
 import {dynamicSize} from '../../../Constants';
 import HomeStack from './HomeStack';
+import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,10 +46,16 @@ const HomeTabs = () => {
       <Tab.Screen
         name={'HomeStack'}
         component={HomeStack}
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+        }}
       />
       <Tab.Screen name={'Requests'} component={Requests} />
-      <Tab.Screen name={'Profile'} component={Profile} />
+      <Tab.Screen
+        name={'Profile'}
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };
