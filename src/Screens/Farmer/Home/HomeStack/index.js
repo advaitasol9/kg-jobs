@@ -9,6 +9,7 @@ import {tStyle} from '../../../../Constants/TextStyle';
 import {FONTS_OVERPASS_TEXT} from '../../../../Constants';
 import CreateRequest2 from './CreateRequest2';
 import Success from './Success';
+import SelectProvider from './SelectProvider';
 
 const Stack = createStackNavigator();
 
@@ -78,6 +79,7 @@ const HomeStack = () => {
       })}>
       <Stack.Screen name={'Home'} component={Home} />
       <Stack.Screen name={'Notifications'} component={Notifications} />
+      <Stack.Screen name={'SelectProvider'} component={SelectProvider} />
       <Stack.Screen name={'CreateRequest1'} component={CreateRequest1} />
       <Stack.Screen name={'CreateRequest2'} component={CreateRequest2} />
       <Stack.Screen

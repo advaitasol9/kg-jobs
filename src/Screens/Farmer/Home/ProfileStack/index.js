@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TouchableOpacity, Image, View, StyleSheet} from 'react-native';
 
@@ -8,10 +8,13 @@ import {tStyle} from '../../../../Constants/TextStyle';
 import {FONTS_OVERPASS_TEXT} from '../../../../Constants';
 import {Shadow} from 'react-native-shadow-2';
 import NormalButton from '../../../../Components/Button/NormalButton';
+import {MoreMenuContext} from '..';
 
 const Stack = createStackNavigator();
 
 const ProfileStack = () => {
+  const setModalVisible = useContext(MoreMenuContext);
+
   return (
     <Stack.Navigator
       screenOptions={({navigation}) => ({

@@ -20,6 +20,7 @@ const TabBar = props => {
     <View style={styles.container}>
       {Object.keys(props.descriptors).map(desc => {
         const {options, navigation, route} = props.descriptors[desc];
+        console.log('route', options);
         const focused = navigation.isFocused();
         if (focused) {
           focusedRoute = route.name;
@@ -42,7 +43,7 @@ const TabBar = props => {
                 styles.routeName,
                 {color: focused ? '#099804' : '#547E92'},
               ]}>
-              {route.name}
+              {options.title}
             </Text>
             {focused && (
               <Image

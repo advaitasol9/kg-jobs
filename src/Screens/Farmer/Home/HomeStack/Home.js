@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -13,10 +13,10 @@ import {FONTS_OVERPASS_TEXT} from '../../../../Constants';
 import {scale, verticalScale} from '../../../../Constants/Size';
 import {tStyle} from '../../../../Constants/TextStyle';
 import {Shadow} from 'react-native-shadow-2';
-import MoreMenu from '../MoreMenu';
+import {MoreMenuContext} from '../index';
 
 const Home = ({navigation}) => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const setModalVisible = useContext(MoreMenuContext);
 
   useEffect(() => {
     navigation.setOptions({
@@ -85,18 +85,23 @@ const Home = ({navigation}) => {
       <View style={{position: 'absolute', top: verticalScale(23), zIndex: 1}}>
         <Text style={styles.text1}>Hello Vinay</Text>
         <Text style={styles.text2}>Recommended actions for you</Text>
-        <Image
-          source={require('../../../../Assets/homett.png')}
-          height={verticalScale(110)}
-          width={scale(364)}
-          resizeMode="cover"
-          style={{
-            height: verticalScale(110),
-            width: scale(364),
-            marginTop: verticalScale(20),
-            borderRadius: 15,
-          }}
-        />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SelectProvider');
+          }}>
+          <Image
+            source={require('../../../../Assets/homett.png')}
+            height={verticalScale(110)}
+            width={scale(364)}
+            resizeMode="cover"
+            style={{
+              height: verticalScale(110),
+              width: scale(364),
+              marginTop: verticalScale(20),
+              borderRadius: 15,
+            }}
+          />
+        </TouchableOpacity>
       </View>
       <NormalButton
         buttonLabel={'Make a Request'}
@@ -112,14 +117,6 @@ const Home = ({navigation}) => {
           navigation.navigate('CreateRequest1');
         }}
       />
-      <Modal visible={modalVisible}>
-        <MoreMenu
-          hideModal={() => {
-            setModalVisible(false);
-            console.log('hello');
-          }}
-        />
-      </Modal>
     </View>
   );
 };

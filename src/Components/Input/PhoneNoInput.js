@@ -66,7 +66,7 @@ function PhoneNoInput({
           isLayoutNone && {
             borderBottomWidth: 1,
             borderColor: '#E7EDF0',
-            height: verticalScale(48),
+            height: verticalScale(60),
             borderRightWidth: 0,
           },
         ]}>
@@ -77,13 +77,18 @@ function PhoneNoInput({
         <TextInput
           value={PhoneNumber}
           onChangeText={onChangeText}
-          underlineColorAndroid={
-            isLayoutNone ? '#E7EDF0' : COLORS.transparentColor
-          }
+          underlineColorAndroid={COLORS.transparentColor}
           keyboardType="phone-pad"
           maxLength={10}
           placeholder={isLayoutNone ? 'Enter Mobile Number' : null}
-          style={styles.countryCodeText}
+          style={[
+            styles.countryCodeText,
+            isLayoutNone && {
+              borderBottomWidth: 1,
+              borderBottomColor: '#E7EDF0',
+              height: verticalScale(60),
+            },
+          ]}
           autoFocus={autoFocus}
         />
       </View>
